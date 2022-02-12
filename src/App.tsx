@@ -22,9 +22,10 @@ const App = () => {
             <main>
                 <Form handleSubmit={handleSubmit} setCategory={setCategory} />
                 <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 px-4 sm:px-16 lg:px-32 my-4">
-                    {categoryResp.map((article: any) => (
-                        <News article={article} key={article.title} />
-                    ))}
+                    {categoryResp &&
+                        categoryResp.map((article: any) => (
+                            <News article={article} key={article.title} />
+                        ))}
                 </section>
             </main>
         </>
