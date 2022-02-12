@@ -9,12 +9,15 @@ const App = () => {
     const { VITE_API_KEY } = import.meta.env;
     const URL = `https://newsapi.org/v2/top-headlines?country=mx&apiKey=${VITE_API_KEY}`;
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
+    const getArticles = async () => {
         const response = await fetch(`${URL}&category=${category}`);
         const { articles } = await response.json();
         setCategoryResp(articles);
+    };
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        await getArticles();
     };
     return (
         <>
