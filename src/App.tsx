@@ -6,10 +6,9 @@ const App = () => {
     const [category, setCategory] = useState("");
     const [categoryResp, setCategoryResp] = useState([]);
 
-    const { VITE_API_KEY } = import.meta.env;
-    const URL = `https://newsapi.org/v2/top-headlines?country=mx&apiKey=${VITE_API_KEY}`;
-
     const getArticles = async () => {
+        const { VITE_API_KEY } = import.meta.env;
+        const URL = `https://newsapi.org/v2/top-headlines?country=mx&apiKey=${VITE_API_KEY}`;
         const response = await fetch(`${URL}&category=${category}`);
         const { articles } = await response.json();
         setCategoryResp(articles);
